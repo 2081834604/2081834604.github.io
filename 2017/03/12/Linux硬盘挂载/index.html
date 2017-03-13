@@ -87,16 +87,40 @@
 
 
 
-<meta name="description" content="#这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上">
+<meta name="description" content="1、 挂载好新硬盘后输入fdisk -l命令看当前磁盘信息 /dev/vdd，不显和磁盘/dev/vda一样的磁盘开始和结束信息。
+
+2、 可以看到除了当前的第一块硬盘外还有一块vdd的第二块硬盘，然后用fdisk /dev/vdd 进行分区
+
+ Note进入fdisk命令，输入h可以看到该命令的帮助，按n进行分区。
+这里输入e即分为逻辑分区，按p即分为主分区，我们要将这块盘分为主分区即输入p 到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux硬盘挂载">
 <meta property="og:url" content="http://blog.710x.com/2017/03/12/Linux硬盘挂载/index.html">
 <meta property="og:site_name" content="时记">
-<meta property="og:description" content="#这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上">
-<meta property="og:updated_time" content="2017-03-12T01:52:41.662Z">
+<meta property="og:description" content="1、 挂载好新硬盘后输入fdisk -l命令看当前磁盘信息 /dev/vdd，不显和磁盘/dev/vda一样的磁盘开始和结束信息。
+
+2、 可以看到除了当前的第一块硬盘外还有一块vdd的第二块硬盘，然后用fdisk /dev/vdd 进行分区
+
+ Note进入fdisk命令，输入h可以看到该命令的帮助，按n进行分区。
+这里输入e即分为逻辑分区，按p即分为主分区，我们要将这块盘分为主分区即输入p 到">
+<meta property="og:image" content="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143409_10241.png">
+<meta property="og:image" content="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143415_36501.png">
+<meta property="og:image" content="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143424_39943.png">
+<meta property="og:image" content="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143431_14281.png">
+<meta property="og:image" content="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143439_62042.png">
+<meta property="og:image" content="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143448_85885.png">
+<meta property="og:image" content="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143456_73374.png">
+<meta property="og:image" content="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143503_86429.png">
+<meta property="og:updated_time" content="2017-03-13T15:02:45.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux硬盘挂载">
-<meta name="twitter:description" content="#这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上">
+<meta name="twitter:description" content="1、 挂载好新硬盘后输入fdisk -l命令看当前磁盘信息 /dev/vdd，不显和磁盘/dev/vda一样的磁盘开始和结束信息。
+
+2、 可以看到除了当前的第一块硬盘外还有一块vdd的第二块硬盘，然后用fdisk /dev/vdd 进行分区
+
+ Note进入fdisk命令，输入h可以看到该命令的帮助，按n进行分区。
+这里输入e即分为逻辑分区，按p即分为主分区，我们要将这块盘分为主分区即输入p 到">
+<meta name="twitter:image" content="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143409_10241.png">
 
 
 
@@ -393,8 +417,37 @@
       
 
       
-        <p>#这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上<a id="more"></a>，在<!--more-->之前的内容会显示在首页，之后的内容会被隐藏，当游客点击Read more才能看到。</p>
-
+        <p>1、 挂载好新硬盘后输入fdisk -l命令看当前磁盘信息 /dev/vdd，不显和磁盘/dev/vda一样的磁盘开始和结束信息。</p>
+<p><img src="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143409_10241.png" alt="fdisk -l"></p>
+<p>2、 可以看到除了当前的第一块硬盘外还有一块vdd的第二块硬盘，然后用fdisk /dev/vdd 进行分区</p>
+<p><img src="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143415_36501.png" alt=""></p>
+<h2 id="Note"><a href="#Note" class="headerlink" title=" Note"></a> Note</h2><pre><code>进入fdisk命令，输入h可以看到该命令的帮助，按n进行分区。
+这里输入e即分为逻辑分区，按p即分为主分区，我们要将这块盘分为主分区即输入p 到这里输入该主分区为第几个主分区，由于是新盘我们输入1来分第一个主分区
+ First Cylinder是选择该分区的起始磁盘数，这里可自定义也可不做选择，默认是1，如无特殊需求强烈建议选择默认，也就是1来分区（直接按回车） 接下来是
+定义该分区的大小，如果按默认（按回车）即是使用全部可用存储额，也可以是用M或m单位结尾的数字(大写M是大B的意思，如果输入1M实际上是X8也就是8m的空间
+),这里直接回车 之后输入w写入分区，等待结束皆可。
+</code></pre><p>3、 再输入fdisk -l 可以看到我们刚才分的一个分区。</p>
+<p><img src="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143424_39943.png" alt=""></p>
+<p>4、 之后用mkfs -t ext3 -c /dev/vdd进行格式化(在此以ext3文件系统为例，如果需要其他文件系统请自行修改。)，如有多个分区可把vdd改成sdb2 sdb3…以此类推，具体可用fdisk -l看到每个分区的名字</p>
+<p><img src="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143431_14281.png" alt=""></p>
+<p>5、 在操作过程中可能会让您输入硬盘卷标，如不想要卷标可直接按回车，等格式化完成后用mount 挂载一下该分区即可使用，这里我把它挂载到/extdir目录下。</p>
+<p><img src="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143439_62042.png" alt=""></p>
+<p>6、 来看一下分区大小是否和预定的一样，使用df -h命令看一下当前挂载的分区和大小，看到我们刚分的分区了吧。<br>如果想每次系统重启都能自动挂载该分区可修改/etc/fstab文件，在最后加一段</p>
+<p>/dev/vdd /extdir ext3 defaults 1 2</p>
+<h2 id="Note-1"><a href="#Note-1" class="headerlink" title=" Note"></a> Note</h2><pre><code>格式说明：
+/dev/vdd 代表哪个分区
+ext3是该分区的格式
+defaults 是挂载时所要设定的参数(只读，读写，启用quota等)，输入defaults包括的参数有(rw、dev、exec、auto、nouser、async)
+1、是使用dump是否要记录，0是不要。
+2、是开机时检查的顺序，是boot系统文件就为1，其他文件系统都为2，如不要检查就为0
+</code></pre><p>当磁盘扩容后需要卸载原来的挂载后重新挂载，磁盘重新挂载后卷标变成了/dev/vde。原来的10G变成了20G，需要先执行umount /extdir。输入fdisk -l可以查看到磁盘变成21.5G</p>
+<p><img src="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143448_85885.png" alt=""></p>
+<p>7、 然后执行mount /dev/vde /extdir 这时查看df –h 如下图显示的硬盘大小和原来的一样。</p>
+<p><img src="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143456_73374.png" alt=""></p>
+<p>8、 已经挂载的磁盘有扩容，需要对文件系统的扩容才能使用，输入以下命令： resize2fs /dev/vde ，然后df –h 查看如下，显示磁盘已经扩容。</p>
+<p><img src="http://www.sinnetcloud.com.cn/resources/plugins/kindEditor/attached/image/20160812/20160812143503_86429.png" alt=""></p>
+<h2 id="Note-2"><a href="#Note-2" class="headerlink" title=" Note"></a> Note</h2><pre><code>最后确认已经修改/etc/fstab文件，设置开机启动
+</code></pre>
       
     </div>
 
@@ -475,8 +528,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -558,6 +620,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">1.</span> <span class="nav-text"> Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note-1"><span class="nav-number">2.</span> <span class="nav-text"> Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note-2"><span class="nav-number">3.</span> <span class="nav-text"> Note</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
